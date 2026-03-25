@@ -25,9 +25,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Red Alert Security Systems | Kerala's Best CCTV & Security Solutions",
+  title: "Red Alert Security Systems | Premium CCTV, Networking & Biometrics in Kerala",
   description:
-    "Expert CCTV installation, networking, biometric, and alarm systems in Ernakulam & Kerala. Get a free site visit today.",
+    "Kerala's most trusted end-to-end security solutions partner. We provide expert CCTV surveillance, networking cabling, biometric access control, and IT support across Ernakulam and beyond.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png"
+  }
 };
 
 export default function RootLayout({
