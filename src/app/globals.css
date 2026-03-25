@@ -1,54 +1,87 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM — RED ALERT SECURITY SYSTEMS
+   PURE DARK GLASS THEME + FLAWLESS MOBILE OPTIMIZATION
+   ============================================================ */
+
 @theme {
-  --color-red-brand: #CC0000;
-  --color-deep-black: #0A0A0A;
-  --color-dark-grey: #1A1A1A;
-  --color-off-white: #F5F5F5;
-  --color-accent-gold: #C9A84C;
-  --font-playfair: var(--font-playfair), serif;
-  --font-montserrat: var(--font-montserrat), sans-serif;
+  /* --- Fonts --- */
+  --font-sora:  var(--font-sora),  sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
+
+  /* --- Background Layers (darkest → lighter card) --- */
+  --color-bg-midnight:  #050816;
+  --color-bg-navy:      #0B1120;
+  --color-bg-section:   #0F172A;
+  --color-bg-card:      #111827;
+
+  /* --- Accents --- */
+  --color-accent-blue:    #00C2FF;
+  --color-accent-green:   #00E6A7;
+  --color-accent-violet:  #7C3AED;
+  --color-danger:         #FF4D6D;
+
+  /* --- Text --- */
+  --color-text-primary: #FFFFFF;
+  --color-text-muted:   #B6C2CF;
+  --color-text-dim:     #94A3B8;
 }
 
+/* ============================================================
+   GLASS CARD UTILITIES
+   ============================================================ */
 @layer utilities {
-  .glass-card {
-    background-color: rgba(255, 255, 255, 0.7);
+  .glass-card, .glass-card-dark {
+    background: rgba(255, 255, 255, 0.05); /* very subtle, never opaque */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .glass-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 194, 255, 0.18); /* blue-tinted glass border */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* base shadow */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
   }
   
-  .glass-card-dark {
-    background-color: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(201, 168, 76, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .glass-card-dark:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(204, 0, 0, 0.2);
+  .glass-card:hover, .glass-card-dark:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.08); /* slightly lighter on hover */
+    border-color: rgba(0, 194, 255, 0.40); /* brightens on hover */
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 194, 255, 0.15); /* glow on hover */
   }
 
+  /* Ultra-glassy button / interactive surface */
+  .glass-btn {
+    background-image: linear-gradient(to right, rgba(0, 194, 255, 0.15), rgba(0, 194, 255, 0.05));
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 194, 255, 0.4);
+    border-top: 1px solid rgba(0, 194, 255, 0.6);
+    box-shadow: 0 8px 20px rgba(0, 194, 255, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .glass-btn:hover {
+    background-image: linear-gradient(to right, rgba(0, 194, 255, 0.25), rgba(0, 194, 255, 0.1));
+    border-color: rgba(0, 194, 255, 0.6);
+    border-top: 1px solid rgba(0, 194, 255, 0.8);
+    box-shadow: 0 12px 30px rgba(0, 194, 255, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  }
+
+  /* Subtle white text-glow for headings */
   .text-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.3), 0 0 80px rgba(255, 255, 255, 0.15);
   }
 }
 
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 :root {
-  --background: #FFFFFF;
-  --foreground: #1A1A1A;
+  --background: #050816;
+  --foreground: #FFFFFF;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }

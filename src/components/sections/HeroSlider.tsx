@@ -42,7 +42,7 @@ export default function HeroSlider() {
   const prevSlide = () => setCurrent(current === 0 ? slides.length - 1 : current - 1);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-deep-black">
+    <div className="relative h-screen w-full overflow-hidden bg-[#050816]">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -67,34 +67,36 @@ export default function HeroSlider() {
             />
           </div>
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-deep-black/80 via-deep-black/50 to-transparent" />
+          {/* Dark Overlay - Extremely deep for high contrast and masking image quality */}
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050816]/95 via-[#050816]/70 to-transparent" />
 
           {/* Content */}
-          <div className="absolute inset-0 flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="absolute inset-0 flex flex-col justify-center max-w-7xl mx-auto px-4 md:px-8">
             <div className={`max-w-2xl transform transition-all duration-1000 delay-300 ${
               index === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}>
-              <div className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 font-montserrat text-xs font-bold tracking-widest uppercase text-accent-gold">
+              {/* Pure dark glass badge */}
+              <div className="inline-block py-1 px-3 md:py-1.5 md:px-4 rounded-full bg-[rgba(255,255,255,0.05)] backdrop-blur-md border border-[rgba(255,255,255,0.15)] mb-4 md:mb-6 font-inter text-xs md:text-sm font-bold tracking-widest uppercase text-white shadow-[0_0_15px_rgba(255,255,255,0.05)]">
                 Kerala's #1 Security Partner
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold text-white leading-tight mb-6 whitespace-pre-line text-glow">
+              <h1 className="text-4xl md:text-6xl font-sora font-bold text-white leading-tight mb-4 md:mb-6 whitespace-pre-line text-glow tracking-tight">
                 {slide.quote}
               </h1>
-              <p className="text-lg md:text-xl text-off-white/90 font-montserrat font-medium mb-10 max-w-xl">
+              <p className="text-base md:text-lg text-[#B6C2CF] font-inter font-medium mb-8 md:mb-10 max-w-xl">
                 {slide.subtitle}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/services"
-                  className="bg-red-brand hover:bg-red-800 text-white px-8 py-4 rounded-full font-bold text-center transition-all shadow-[0_0_20px_rgba(204,0,0,0.4)] hover:shadow-[0_0_30px_rgba(204,0,0,0.6)] hover:-translate-y-1"
+                  className="glass-btn text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-center text-sm md:text-base transition-all bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.15)] border-[rgba(255,255,255,0.2)] hover:border-white shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                 >
                   Explore Our Solutions →
                 </Link>
                 <a
                   href="tel:+9173567564337"
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold text-center transition-all hover:-translate-y-1"
+                  className="glass-btn text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-center text-sm md:text-base transition-all shadow-md"
                 >
                   📞 73567 564337
                 </a>
@@ -105,34 +107,35 @@ export default function HeroSlider() {
       ))}
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-12 right-6 lg:right-12 z-20 flex items-center gap-6">
+      <div className="absolute bottom-8 right-4 md:bottom-12 md:right-12 z-20 flex items-center gap-4 md:gap-6">
         <div className="flex gap-2">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
               className={`transition-all duration-300 rounded-full ${
-                idx === current ? "w-8 h-2 bg-red-brand" : "w-2 h-2 bg-white/50"
+                idx === current ? "w-6 h-2 md:w-8 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]" : "w-2 h-2 bg-[rgba(255,255,255,0.3)] hover:bg-[rgba(255,255,255,0.5)]"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
         </div>
         
-        <div className="flex gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-1">
+        {/* Navigation Arrows in Glass Pill */}
+        <div className="flex gap-2 bg-[rgba(255,255,255,0.05)] backdrop-blur-md border border-[rgba(255,255,255,0.15)] rounded-full p-1 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full hover:bg-white/20 text-white transition-colors"
+            className="p-2 rounded-full hover:bg-[rgba(255,255,255,0.1)] text-white transition-colors"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" />
           </button>
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full hover:bg-white/20 text-white transition-colors"
+            className="p-2 rounded-full hover:bg-[rgba(255,255,255,0.1)] text-white transition-colors"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" />
           </button>
         </div>
       </div>

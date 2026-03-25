@@ -1,23 +1,33 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+/* ============================================================
+   FONT CONFIGURATION
+   Sora  → Headings (H1, H2, H3, brand name)
+   Inter → Body text, labels, buttons, nav links
+   ============================================================ */
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  display: "swap",
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Red Alert Security Systems | Kerala's Best CCTV & Security Solutions",
-  description: "Expert CCTV installation, networking, biometric, and alarm systems in Ernakulam & Kerala. Get a free site visit today.",
+  description:
+    "Expert CCTV installation, networking, biometric, and alarm systems in Ernakulam & Kerala. Get a free site visit today.",
 };
 
 export default function RootLayout({
@@ -28,9 +38,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${sora.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-montserrat bg-white text-dark-grey scroll-smooth">
+      {/*
+        Body rules — CONTRAST ENFORCED:
+        - bg-[#050816]  : deep midnight background (darkest layer)
+        - text-white    : primary text is always white on this dark background
+        - font-inter    : Inter is the default body font
+      */}
+      <body className="min-h-full flex flex-col font-inter bg-[#050816] text-white scroll-smooth">
         <Navbar />
         <main className="flex-grow flex flex-col">
           {children}

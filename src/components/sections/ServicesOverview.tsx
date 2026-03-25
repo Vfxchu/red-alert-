@@ -42,7 +42,7 @@ const services = [
     icon: Home,
     title: "Smart Home Security",
     desc: "Integrated IoT security solutions engineered for premium residences.",
-    href: "/services/cctv", // Routing to existing services for MVP
+    href: "/services/cctv", 
   },
 ];
 
@@ -52,34 +52,35 @@ export default function ServicesOverview() {
       id="services"
       title="End-to-End Security Solutions"
       subtitle="Comprehensive protection engineered for homes and businesses across Ernakulam."
-      className="bg-[#F5F5F5] relative overflow-hidden"
+      className="bg-[#0B1120] relative overflow-hidden"
     >
-      {/* Decorative background circle */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-brand/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      {/* Decorative background glow - White glass style */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[rgba(255,255,255,0.02)] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10"
       >
         {services.map((service, index) => {
           const Icon = service.icon;
           return (
             <motion.div key={index} variants={fadeUp} className="h-full">
               <Link href={service.href} className="block h-full group">
-                <GlassCard className="transition-all duration-300 hover:border-red-brand hover:shadow-[0_12px_40px_rgba(204,0,0,0.1)]">
-                  <div className="w-14 h-14 bg-red-50 text-red-brand rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-brand group-hover:text-white transition-colors duration-300 shadow-sm">
-                    <Icon className="w-7 h-7" />
+                {/* Rely on GlassCard default utility classes */}
+                <GlassCard className="h-full hover:border-[rgba(255,255,255,0.3)]">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:bg-[rgba(255,255,255,0.1)] group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
+                    <Icon className="w-6 h-6 md:w-8 md:h-8" stroke="currentColor" />
                   </div>
-                  <h3 className="text-xl font-playfair font-bold text-deep-black mb-3 group-hover:text-red-brand transition-colors">
+                  <h3 className="text-xl md:text-2xl font-sora font-bold text-white mb-2 md:mb-3 group-hover:text-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all">
                     {service.title}
                   </h3>
-                  <p className="text-dark-grey/80 text-sm leading-relaxed mb-6 flex-grow">
+                  <p className="text-[#B6C2CF] text-base md:text-lg leading-relaxed mb-4 md:mb-6 flex-grow group-hover:text-white transition-colors duration-300">
                     {service.desc}
                   </p>
-                  <span className="text-red-brand font-semibold text-sm flex items-center gap-1 mt-auto">
+                  <span className="text-white font-semibold text-sm md:text-base flex items-center gap-1 mt-auto border-b border-transparent group-hover:border-white inline-flex w-fit pb-0.5 transition-all">
                     Learn More <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </span>
                 </GlassCard>

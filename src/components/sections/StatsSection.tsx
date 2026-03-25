@@ -53,8 +53,8 @@ function Counter({ from, to, duration = 2 }: { from: number; to: number; duratio
 
 export default function StatsSection() {
   return (
-    <SectionWrapper dark className="bg-deep-black relative py-20 lg:py-24">
-      {/* Decorative background grid */}
+    <SectionWrapper dark className="bg-[#0B1120] relative py-12 md:py-24 border-y border-[rgba(255,255,255,0.05)]">
+      {/* Decorative dark glass grid */}
       <div 
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
@@ -65,15 +65,15 @@ export default function StatsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12 relative z-10"
+        className="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10 md:gap-y-12 relative z-10"
       >
         {stats.map((stat, idx) => (
-          <motion.div key={idx} variants={scaleIn} className="text-center">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-accent-gold mb-4 text-glow flex justify-center items-center">
+          <motion.div key={idx} variants={scaleIn} className="text-center group">
+            <div className="text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-white mb-2 md:mb-4 text-glow flex justify-center items-center">
               <Counter from={0} to={stat.value} />
               <span>{stat.suffix}</span>
             </div>
-            <p className="text-off-white/80 font-medium text-sm md:text-base uppercase tracking-widest">
+            <p className="text-[#94A3B8] font-inter font-semibold text-sm md:text-base uppercase tracking-widest group-hover:text-white transition-colors">
               {stat.label}
             </p>
           </motion.div>
