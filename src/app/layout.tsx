@@ -28,10 +28,6 @@ export const metadata: Metadata = {
   title: "Red Alert Security Systems | Premium CCTV, Networking & Biometrics in Kerala",
   description:
     "Kerala's most trusted end-to-end security solutions partner. We provide expert CCTV surveillance, networking cabling, biometric access control, and IT support across Ernakulam and beyond.",
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png"
-  }
 };
 
 export default function RootLayout({
